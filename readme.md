@@ -52,9 +52,13 @@ To use the `XFloat` library, simply include the header file in your project:
 
 - `std::string toString() const` - Converts the `XFloat` object to a string representation.
 - `static void setPrecision(int prec)` - Sets the floating point precision for all `XFloat` objects.
-
-## Example
-
+- ```cpp
+  XFloat pi;
+  // Important! Set precision if result might be a float with infinite decimal digits like pi
+  pi.setPrecision(10);
+  pi = circumference / diameter;
+  ## Example
+  ```
 ```cpp
 #include "XFloat.h"
 #include <iostream>
