@@ -51,7 +51,8 @@ To use the `XFloat` library, simply include the header file in your project:
 ### Utility Functions
 
 - `std::string toString() const` - Converts the `XFloat` object to a string representation.
-- `static void setPrecision(int prec)` - Sets the floating point precision for all `XFloat` objects. ```cpp
+- `static void setPrecision(int prec)` - Setting the precision is an important step when performing a division whose result could be an infinite number of decimal places.
+  ```cpp
   XFloat pi;
   // Important! Set precision if result might be a float with infinite decimal digits like pi
   pi.setPrecision(10);
