@@ -59,28 +59,55 @@ To use the `XFloat` library, simply include the header file in your project:
   pi = circumference / diameter;
   ## Example
   ```
-
+## Example of usage
 ```cpp
-#include "XFloat.h"
+
 #include <iostream>
+#include "XFloat.h"
+using namespace std;
+// Factorial
+XFloat factorial(XFloat n)
+{
+    if (n == "0")
+        return "1";
+    return n * factorial(n - "1");
+}
 
+//Finding pi
+XFloat findPi(XFloat circumference, XFloat diameter)
+{
+    XFloat pi;
+    // Important! Set precision if result might be a float with infinite decimal digits like pi
+    pi.setPrecision(10);
+    pi = circumference / diameter;
+    return pi;
+}
+
+// Print
+void printFactorial(XFloat n)
+{
+    XFloat fac = "1";
+    fac = factorial(n);
+    cout << "Factorial of " << n << " is " << fac << endl;
+}
+void printPi(XFloat circumference, XFloat diameter)
+{
+    XFloat pi = findPi(circumference, diameter);
+	cout << char(-29) << " " << char(-9) << " ";
+	cout << pi;
+}
 int main() {
-    XFloat::setPrecision(10); // Set precision to 10 digits
-
-    XFloat num1("123.456");
-    XFloat num2("789.012");
-
-    XFloat sum = num1 + num2;
-    XFloat difference = num1 - num2;
-    XFloat product = num1 * num2;
-    XFloat quotient = num1 / num2;
-
-    std::cout << "Sum: " << sum.toString() << std::endl;
-    std::cout << "Difference: " << difference.toString() << std::endl;
-    std::cout << "Product: " << product.toString() << std::endl;
-    std::cout << "Quotient: " << quotient.toString() << std::endl;
-
+	try
+	{
+		printFactorial("30");
+		printPi("1000000000", "318309886.18");
+	}
+	catch (const char* c)
+	{
+		cout << c;
+	}
     return 0;
+
 }
 ```
 
